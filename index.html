@@ -48,6 +48,7 @@
         background-size: contain;
         width: 200px;
         height: 200px;
+        z-index: 10;
     }
 
     .but-small {
@@ -60,6 +61,47 @@
         left: 0;
         text-align: center;
         right: 0;
+    }
+
+    .donate {
+        position: fixed;
+        bottom: 5px;
+        text-align: center;
+        right: 0;
+    }
+
+    .don8button {
+        width: 300px;
+        padding: 10px;
+        border: 3px solid blueviolet;
+        background-color: blue;
+        border-radius: 50px;
+        color: white;
+        animation: infinite 0.2s chaosbutton ease-in-out;
+        display: block;
+    }
+
+    @keyframes chaosbutton {
+        0% {
+            border-color: blueviolet;
+            transform: translateY(0);
+            background-color: deeppink;
+        }
+
+        49.9% {
+            border-color: blueviolet;
+        }
+
+        50% {
+            border-color: black;
+            transform: translateY(-10px);
+        }
+
+        100% {
+            border-color: black;
+            background-color: deepskyblue;
+            transform: translateX(-10px);
+        }
     }
 </style>
 <div class="container">
@@ -76,3 +118,22 @@
     this site is sponsored by chloe 🦄🌈🦦🦦🦦<br>
     lampjaw drives a pt cruiser and that's not driving thats cruising - okano 🦊
 </div>
+<div class="donate">
+    <a class="don8button" href="#" id="donatelinkchaos" target="_blank">donate to help</a>
+</div>
+<script>
+    const donateButton = document.querySelector("#donatelinkchaos")
+    const links = [
+        "https://www.saveafox.org/donate",
+        "https://www.google.com/search?q=fox+animal&tbm=isch",
+        "https://teespring.com/cheese-loves-lamp"
+    ]
+    const chaosifyLink = () => setTimeout(() => {
+        donateButton.href = links[Math.floor(Math.random() * links.length)]
+        chaosifyLink()
+    }, Math.floor(Math.random() * 1000) + 300)
+
+    window.onload = () => {
+        chaosifyLink()
+    }
+</script>
